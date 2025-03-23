@@ -1,0 +1,9 @@
+Flask
+requests
+beautifulsoup4
+vaderSentiment
+keybert
+spacy
+googletrans==4.0.0-rc1
+gtts
+streamlit
