@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import json  # Import JSON module for formatting
 
 st.title("📢 News Summarization & Sentiment Analysis")
 
@@ -24,13 +25,10 @@ if st.button("Fetch News"):
         st.session_state.news_fetched = True  # Set news fetched to True
 
 if st.session_state.news_fetched:
-    st.subheader("News Articles")
-    for article in st.session_state.articles:
-        st.write(f"**{article['title']}**")
-        st.write(f"Summary: {article['summary']}")
-        st.write(f"Sentiment: {article['sentiment']}")
-        st.write(f"Topics: {', '.join(article['topics'])}")
-        st.write("---")
+    st.subheader("News Articles in JSON Format")
+    
+    # Display the raw JSON response
+    st.json(st.session_state.articles)  # Displays structured JSON output
 
     if st.button("Generate Hindi Audio") and not st.session_state.audio_generated:
         summary_text = " ".join([article['summary'] for article in st.session_state.articles if article['summary']])
